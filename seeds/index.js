@@ -29,16 +29,15 @@ const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
   await Campground.deleteMany({});
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 25; i++) {
     // setup
     const placeSeed = Math.floor(Math.random() * places.length);
     const descriptorsSeed = Math.floor(Math.random() * descriptors.length);
     const citySeed = Math.floor(Math.random() * cities.length);
     const priceSeed = Math.floor(Math.random() * 30);
-
-    // seed data into campground
     const camp = new Campground({
       image: await seedImg(),
+      author: "62d3094249b13a851943e373",
       title: `${descriptors[descriptorsSeed]} ${places[placeSeed]}`,
       location: `${cities[citySeed].city}, ${cities[citySeed].state}`,
       description:
