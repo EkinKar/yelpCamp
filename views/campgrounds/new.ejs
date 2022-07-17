@@ -1,8 +1,9 @@
 <% layout('layouts/boilerplate') %>
+    <link rel="stylesheet" href="/stylesheets/images.css" class="rel">
     <div class="row">
         <h1 class="text-center">New Campgroud</h1>
         <div class="col-6 offset-3">
-            <form action="/campgrounds" method="post" novalidate class="validated-form">
+            <form action="/campgrounds" method="post" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label" for="title">Title</label>
                     <input class="form-control" type="text" id="title" name="campground[title]" required>
@@ -19,15 +20,7 @@
                         Please provide the location.
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="image">Image Url</label>
-                    <input class="form-control" type="text" id="image" name="campground[image]" required>
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">
-                        Please provide an image.
-                    </div>
-                </div>
-                <div class="mb-3">
+                <div class=" mb-3">
                     <label class="form-label" for="price">Campgroud Price</label>
                     <div class="input-group">
                         <span class="input-group-text" id="Price">$</span>
@@ -40,14 +33,24 @@
                     </div>
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Choose Image(s)</label>
+                    <div class="form-file custom-file">
+                        <input class="form-control custom-file-input" type="file" id="image" name="image" multiple
+                            onchange="previewMultiple(event)">
+                        <label for="image" class="form-label custom-file-label"></label>
+                    </div>
+                    <div id="formFile"></div>
+                </div>
+                <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" type="text" id="description" name="campground[description]"
+                    <textarea class="form-control" type="text" rows="3" id="description" name="campground[description]"
                         required></textarea>
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">
                         Please provide a description.
                     </div>
                 </div>
+
                 <div class="mb-3">
                     <button class="btn btn-success">Add Campground</button>
                 </div>
