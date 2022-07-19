@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/stylesheets/images.css" class="rel">
 <div class="row">
   <h1 class="text-center">New Campgroud</h1>
-  <div class="col-6 offset-3">
+  <div class="col-md-6 offset-md-3">
     <form action="/campgrounds" method="post" novalidate class="validated-form" enctype="multipart/form-data">
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
@@ -34,8 +34,11 @@
       <div class="mb-3">
         <label class="form-label">Choose Image(s)</label>
         <div class="form-file custom-file">
-          <input class="form-control custom-file-input" type="file" id="image" name="image" multiple onchange="previewMultiple(event)">
+          <input class="form-control custom-file-input" type="file" id="image" name="image" multiple onchange="previewMultiple(event)" required>
           <label for="image" class="form-label custom-file-label"></label>
+          <div class="invalid-feedback">
+            Please upluad at least one image.
+          </div>
         </div>
         <div id="formFile"></div>
       </div>
