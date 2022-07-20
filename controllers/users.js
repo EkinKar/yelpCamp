@@ -3,6 +3,7 @@ const User = require("../models/user");
 module.exports.renderRegister = (req, res) => {
   if (req.isAuthenticated()) {
     const redirectUrl = req.session.returnTo || "/";
+    delete req.session.returnTo;
     return res.redirect(redirectUrl);
   }
   res.render("users/register");
@@ -27,6 +28,7 @@ module.exports.register = async (req, res, next) => {
 module.exports.renderLogin = (req, res) => {
   if (req.isAuthenticated()) {
     const redirectUrl = req.session.returnTo || "/";
+    delete req.session.returnTo;
     return res.redirect(redirectUrl);
   }
   res.render("users/login");
